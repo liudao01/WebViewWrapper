@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.view.KeyEvent;
 
 import com.common.lib_model_web.fragment.BaseWebviewFragment;
+import com.common.lib_model_web.fragment.ProgressWebFragment;
 import com.common.lib_model_web.fragment.WebFragment;
 
 public class MainActivity extends AppCompatActivity {
@@ -36,13 +37,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 //        title = getIntent().getStringExtra(WebConstants.INTENT_TAG_TITLE);
         title = "腾讯网";
-        url ="https://xw.qq.com/?f=qqcom";
+        url = "https://xw.qq.com/?f=qqcom";
 //        url = getIntent().getStringExtra(WebConstants.INTENT_TAG_URL);
         setTitle(title);
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction transaction = fm.beginTransaction();
 
-        WebFragment    webviewFragment = WebFragment.newInstance(url);
+        ProgressWebFragment webviewFragment = ProgressWebFragment.newInstance(url);
         transaction.replace(R.id.web_view_fragment, webviewFragment).commit();
     }
 

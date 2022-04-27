@@ -28,9 +28,14 @@ public abstract class BaseWebviewFragment extends BaseFragment {
     protected DWebView webView;
 
     public String webUrl;
+    public View view;
 
     @LayoutRes
     protected abstract int getLayoutRes();
+
+    public  void initView(){
+
+    };
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -45,8 +50,9 @@ public abstract class BaseWebviewFragment extends BaseFragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(getLayoutRes(), container, false);
+        view = inflater.inflate(getLayoutRes(), container, false);
         webView = view.findViewById(R.id.web_view);
+        initView();
         return view;
     }
 

@@ -32,6 +32,8 @@ import android.webkit.WebViewClient;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 
+import com.common.lib_model_web.interfaces.DWebViewCallBack;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ExecutorService;
@@ -54,7 +56,7 @@ public class DWebView extends WebView {
 
     boolean isReady;
 
-//    private DWebViewCallBack dWebViewCallBack;
+    private DWebViewCallBack dWebViewCallBack;
 
     private Map<String, String> mHeaders;
 
@@ -81,9 +83,9 @@ public class DWebView extends WebView {
         init(context);
     }
 
-//    public void registerdWebViewCallBack(DWebViewCallBack dWebViewCallBack) {
-//        this.dWebViewCallBack = dWebViewCallBack;
-//    }
+    public void registerdWebViewCallBack(DWebViewCallBack dWebViewCallBack) {
+        this.dWebViewCallBack = dWebViewCallBack;
+    }
 
     public void setHeaders(Map<String, String> mHeaders) {
         this.mHeaders = mHeaders;
@@ -402,9 +404,9 @@ public class DWebView extends WebView {
             if (handleLinked(url)) {
                 return true;
             }
-//            if (dWebViewCallBack != null && dWebViewCallBack.overrideUrlLoading(view, url)) {
-//                return true;
-//            }
+            if (dWebViewCallBack != null && dWebViewCallBack.overrideUrlLoading(view, url)) {
+                return true;
+            }
             // 控制页面中点开新的链接在当前webView中打开
             view.loadUrl(url, mHeaders);
             return true;
@@ -425,9 +427,9 @@ public class DWebView extends WebView {
             if (handleLinked(request.getUrl().toString())) {
                 return true;
             }
-//            if (dWebViewCallBack != null && dWebViewCallBack.overrideUrlLoading(view, request.getUrl().toString())) {
-//                return true;
-//            }
+            if (dWebViewCallBack != null && dWebViewCallBack.overrideUrlLoading(view, request.getUrl().toString())) {
+                return true;
+            }
             // 控制页面中点开新的链接在当前webView中打开
             view.loadUrl(request.getUrl().toString(), mHeaders);
             return true;
@@ -459,17 +461,17 @@ public class DWebView extends WebView {
             if (!TextUtils.isEmpty(url) && url.startsWith(CONTENT_SCHEME)) {
                 isReady = true;
             }
-//            if (dWebViewCallBack != null) {
-//                dWebViewCallBack.pageFinished(url);
-//            }
+            if (dWebViewCallBack != null) {
+                dWebViewCallBack.pageFinished(url);
+            }
         }
 
         @Override
         public void onPageStarted(WebView view, String url, Bitmap favicon) {
             Log.e(TAG, "onPageStarted url: " + url);
-//            if (dWebViewCallBack != null) {
-//                dWebViewCallBack.pageStarted(url);
-//            }
+            if (dWebViewCallBack != null) {
+                dWebViewCallBack.pageStarted(url);
+            }
         }
 
         @Override
@@ -492,9 +494,9 @@ public class DWebView extends WebView {
         public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
             super.onReceivedError(view, errorCode, description, failingUrl);
             Log.e(TAG, "webview error" + errorCode + " + " + description);
-//            if (dWebViewCallBack != null) {
-//                dWebViewCallBack.onError();
-//            }
+            if (dWebViewCallBack != null) {
+                dWebViewCallBack.onError();
+            }
         }
 
         @Override
