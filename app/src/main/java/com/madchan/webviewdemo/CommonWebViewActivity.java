@@ -18,7 +18,8 @@ import android.widget.Toast;
 
 public class CommonWebViewActivity extends Activity {
 
-    public static final String TEST_URL = "http://blog.csdn.net/liudao7994?skin=dark1";
+    public static final String TEST_URL = "10.26.2.109:8080/pos-html";
+//    public static final String TEST_URL = "https://blog.csdn.net/liudao7994?skin=dark1";
     private static final String INTENT_EXTRA_URL = "INTENT_EXTRA_URL";
     private String url;
 

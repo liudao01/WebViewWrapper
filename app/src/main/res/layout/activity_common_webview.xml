@@ -2,10 +2,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".MainActivity">
+    android:orientation="vertical">
 
-    <include layout="@layout/common_header"/>
+    <include layout="@layout/common_header" />
 
     <ProgressBar
         android:id="@+id/pb_load"
@@ -14,24 +13,22 @@
         android:layout_height="wrap_content"
         android:indeterminate="false"
         android:maxHeight="2dp"
-        android:visibility="gone"
-        android:minHeight="2dp" />
+        android:minHeight="2dp"
+        android:visibility="gone" />
 
     <WebView
         android:id="@+id/wv_common"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        />
+        android:layout_weight="1" />
 
     <include layout="@layout/cutline" />
 
     <RelativeLayout
+        android:id="@+id/rl_toolbar"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@android:color/white"
-        android:id="@+id/rl_toolbar"
-        >
+        android:background="@android:color/white">
 
         <ImageButton
             android:id="@+id/btn_backward"
@@ -39,8 +36,8 @@
             android:layout_height="50dp"
             android:layout_alignParentLeft="true"
             android:layout_marginLeft="5dp"
-            android:onClick="backwardOnClick"
             android:background="@drawable/common_btn_selector"
+            android:onClick="backwardOnClick"
             android:src="@mipmap/toolbar_btn_backward" />
 
         <ImageButton
@@ -48,21 +45,21 @@
             android:layout_width="60dp"
             android:layout_height="50dp"
             android:layout_marginLeft="20dp"
-            android:onClick="forwardOnClick"
             android:layout_toRightOf="@id/btn_backward"
             android:background="@drawable/common_btn_selector"
+            android:onClick="forwardOnClick"
             android:src="@mipmap/toolbar_btn_forward" />
 
         <ImageButton
             android:id="@+id/btn_refresh"
             android:layout_width="60dp"
             android:layout_height="50dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/common_btn_selector"
+            android:onClick="refreshOnClick"
             android:padding="12dp"
             android:scaleType="centerInside"
-            android:layout_marginRight="10dp"
-            android:layout_alignParentRight="true"
-            android:onClick="refreshOnClick"
-            android:background="@drawable/common_btn_selector"
             android:src="@mipmap/toolbar_btn_refresh" />
     </RelativeLayout>
 
