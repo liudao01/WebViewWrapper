@@ -78,7 +78,9 @@ public class WebDefaultSettingManager implements AgentWebSettings {
         mWebSettings.setLoadsImagesAutomatically(true);
         mWebSettings.setSupportMultipleWindows(false);
         mWebSettings.setBlockNetworkImage(false);//是否阻塞加载网络图片  协议http or https
-        mWebSettings.setAllowFileAccess(true); //允许加载本地文件html  file协议
+        mWebSettings.setAllowFileAccess(true); //允许加载本地文件html  file协议 // 设置允许访问文件数据
+
+        mWebSettings.setAllowContentAccess(true);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
             mWebSettings.setAllowFileAccessFromFileURLs(false); //通过 file url 加载的 Javascript 读取其他的本地文件 .建议关闭
             mWebSettings.setAllowUniversalAccessFromFileURLs(false);//允许通过 file url 加载的 Javascript 可以访问其他的源，包括其他的文件和 http，https 等其他的源
@@ -90,7 +92,7 @@ public class WebDefaultSettingManager implements AgentWebSettings {
         } else {
             mWebSettings.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.NORMAL);
         }
-        mWebSettings.setSavePassword(false);
+//        mWebSettings.setSavePassword(false);
         mWebSettings.setSaveFormData(false);
         mWebSettings.setLoadWithOverviewMode(true);
         mWebSettings.setUseWideViewPort(true);
@@ -108,7 +110,7 @@ public class WebDefaultSettingManager implements AgentWebSettings {
         mWebSettings.setAppCacheMaxSize(1024*1024*80);
 
         // 用户可以自己设置useragent
-        mWebSettings.setUserAgentString("webprogress/build you agent info");
+//        mWebSettings.setUserAgentString("webprogress/build you agent info");
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             webView.setWebContentsDebuggingEnabled(BuildConfig.DEBUG);

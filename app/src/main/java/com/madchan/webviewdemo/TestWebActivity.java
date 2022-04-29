@@ -32,14 +32,18 @@ public class TestWebActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test_web);
 //        title = getIntent().getStringExtra(WebConstants.INTENT_TAG_TITLE);
-        title = "腾讯网";
-        url = "https://xw.qq.com/?f=qqcom";
+        String title = "腾讯网";
+//        String url = "https://xw.qq.com/?f=qqcom";
+        url = "file:///android_asset/index.html";
+//        url = "http://10.26.2.109:8080/pos-html/login";
 //        url = getIntent().getStringExtra(WebConstants.INTENT_TAG_URL);
         setTitle(title);
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction transaction = fm.beginTransaction();
 
-        ProgressWebFragment webviewFragment = ProgressWebFragment.newInstance(url);
+//        ProgressWebFragment webviewFragment = ProgressWebFragment.newInstance(url);
+
+        ProgressWebFragment webviewFragment = ProgressWebFragment.newInstance(url, NativeMethods.class);
         transaction.replace(R.id.web_view_fragment, webviewFragment).commit();
     }
 }

@@ -1,7 +1,6 @@
 package com.common.lib_model_web;
 
 
-import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.content.ActivityNotFoundException;
 import android.content.Context;

@@ -1,21 +1,17 @@
 package com.common.lib_model_web.fragment;
 
-import android.content.Context;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.webkit.JsResult;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.widget.ProgressBar;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-
 import com.common.lib_model_web.R;
 import com.common.lib_model_web.WebConstants;
 import com.common.lib_model_web.interfaces.DWebViewCallBack;
+
+import java.io.Serializable;
 
 /**
  * Created by xud on 2017/12/16.
@@ -30,11 +26,26 @@ public class ProgressWebFragment extends BaseWebviewFragment {
         return fragment;
     }
 
+
+    public static ProgressWebFragment newInstance(String keyUrl, Class<? extends Serializable> classz) {
+        ProgressWebFragment fragment = new ProgressWebFragment();
+        fragment.setArguments(getBundle(keyUrl,classz));
+        return fragment;
+    }
+
     public static Bundle getBundle(String url) {
         Bundle bundle = new Bundle();
         bundle.putString(WebConstants.INTENT_TAG_URL, url);
         return bundle;
     }
+
+    public static Bundle getBundle(String url, Class<?> classz) {
+        Bundle bundle = new Bundle();
+        bundle.putString(WebConstants.INTENT_TAG_URL, url);
+        bundle.putSerializable(WebConstants.INTENT_TAG_CLAZZ,classz);
+        return bundle;
+    }
+
 
     @Override
     protected int getLayoutRes() {
@@ -79,6 +90,8 @@ public class ProgressWebFragment extends BaseWebviewFragment {
             }
 
         });
+
+
 
 
     }

@@ -1,14 +1,12 @@
 package com.common.lib_model_web.fragment;
 
 
-import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebView;
 
 import androidx.annotation.LayoutRes;
 import androidx.annotation.NonNull;
@@ -17,6 +15,7 @@ import androidx.annotation.Nullable;
 import com.common.lib_model_web.DWebView;
 import com.common.lib_model_web.R;
 import com.common.lib_model_web.WebConstants;
+import com.common.lib_model_web.brige.JSBridge;
 
 /**
  * Created by xud on 2017/12/16.
@@ -29,13 +28,15 @@ public abstract class BaseWebviewFragment extends BaseFragment {
 
     public String webUrl;
     public View view;
+    public Class clazz;
 
     @LayoutRes
     protected abstract int getLayoutRes();
 
-    public  void initView(){
+    public void initView() {
 
-    };
+    }
+
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -43,6 +44,7 @@ public abstract class BaseWebviewFragment extends BaseFragment {
         Bundle bundle = getArguments();
         if (bundle != null) {
             webUrl = bundle.getString(WebConstants.INTENT_TAG_URL);
+            clazz = (Class) bundle.getSerializable(WebConstants.INTENT_TAG_CLAZZ);
             Log.d("TAG", "onCreate: webUrl = " + webUrl);
         }
     }
@@ -52,6 +54,7 @@ public abstract class BaseWebviewFragment extends BaseFragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(getLayoutRes(), container, false);
         webView = view.findViewById(R.id.web_view);
+
         initView();
         return view;
     }
@@ -62,10 +65,16 @@ public abstract class BaseWebviewFragment extends BaseFragment {
 //        webLifeCycle = new DefaultWebLifeCycleImpl(webView);
 //        webView.registerdWebViewCallBack(this);
         loadUrl();
+
+        if (clazz != null) {
+            JSBridge.register("JSBridge", clazz);
+        }
+        webView.addJavascriptInterface(new JSBridge(webView), "_jsbridge");
     }
 
     protected void loadUrl() {
         webView.loadUrl(webUrl);
+//        webView.loadUrl("file:///android_asset/index.html");
     }
 
     @Override

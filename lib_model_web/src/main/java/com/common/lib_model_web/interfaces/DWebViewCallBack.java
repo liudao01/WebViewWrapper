@@ -1,6 +1,5 @@
 package com.common.lib_model_web.interfaces;
 
-import android.content.Context;
 import android.webkit.WebView;
 
 /**
