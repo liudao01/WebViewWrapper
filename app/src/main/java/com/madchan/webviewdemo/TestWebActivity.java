@@ -6,9 +6,11 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.webkit.ValueCallback;
 import android.widget.Button;
 
+import com.common.lib_model_web.brige.JavaScriptInterfaceApi;
 import com.common.lib_model_web.fragment.ProgressWebFragment;
 
 public class TestWebActivity extends AppCompatActivity {
@@ -17,6 +19,8 @@ public class TestWebActivity extends AppCompatActivity {
     private String title;
     private String url;
     private Button btCallH5;
+
+    private Button btCall;
 
 
 
@@ -36,6 +40,7 @@ public class TestWebActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test_web);
         btCallH5 = findViewById(R.id.bt_call_h5);
+        btCall = findViewById(R.id.bt_call);
 
 //        title = getIntent().getStringExtra(WebConstants.INTENT_TAG_TITLE);
         String title = "腾讯网";
@@ -61,7 +66,22 @@ public class TestWebActivity extends AppCompatActivity {
 //        });
 
         btCallH5.setOnClickListener(view->{
-            webviewFragment.jsMethods();
+            webviewFragment.getApi().executeJavascript("androidToJs(333)", new JavaScriptInterfaceApi.JavascriptCallback() {
+                @Override
+                public void onReceiveValue(String value) {
+                    Log.d("jsMethods", "onReceiveValue: " + value);
+                }
+            });
+
+        });
+        btCall.setOnClickListener(view->{
+            webviewFragment.getApi().executeJavascript("callJS()", new JavaScriptInterfaceApi.JavascriptCallback() {
+                @Override
+                public void onReceiveValue(String value) {
+                    Log.d("jsMethods", "onReceiveValue: " + value);
+                }
+            });
+
         });
 
     }

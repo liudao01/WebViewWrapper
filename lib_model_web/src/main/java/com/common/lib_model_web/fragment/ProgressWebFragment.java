@@ -23,7 +23,7 @@ import java.io.Serializable;
 
 public class ProgressWebFragment extends BaseWebviewFragment {
     private ProgressBar pbLoad;
-    private JavaScriptInterfaceApi api;
+    public JavaScriptInterfaceApi api;
 
     public static ProgressWebFragment newInstance(String keyUrl) {
         ProgressWebFragment fragment = new ProgressWebFragment();
@@ -101,6 +101,10 @@ public class ProgressWebFragment extends BaseWebviewFragment {
         api = new JavaScriptInterfaceApi(mContext, webView);
 
 
+    }
+
+    public JavaScriptInterfaceApi getApi(){
+        return api;
     }
 
     public void jsMethods() {
