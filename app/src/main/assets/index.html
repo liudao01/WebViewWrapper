@@ -7,7 +7,6 @@
     <title>Document</title>
     <script src="file:///android_asset/JSBridge.js" type="text/javascript"></script>
     <script type="text/javascript">
-
         function handleClick(msg) {
             var arg = {
                 msg: msg,
@@ -26,16 +25,17 @@
             });
         }
 
- function androidToJs(msg) {
+        function androidToJs(msg) {
             console.log('androidToJs'+msg)
             var arg = {
                 msg: msg,
             };
-            alert(msg)
+            alert(msg);
+            return msg+"JS 代码";
         }
 
         function callJS(){
-      alert("Android调用了JS的callJS方法");
+        alert("Android调用了JS的callJS方法");
    }
 
     </script>
