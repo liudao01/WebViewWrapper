@@ -42,7 +42,6 @@ public class TestWebActivity extends AppCompatActivity {
 
 //        String url = "https://xw.qq.com/?f=qqcom";
         url = "file:///android_asset/index.html";
-//        url = "http://10.26.2.109:8080/pos-html/login";
 //        url = getIntent().getStringExtra(WebConstants.INTENT_TAG_URL);
         setTitle(title);
         FragmentManager fm = getSupportFragmentManager();
