@@ -9,18 +9,17 @@ import android.webkit.ValueCallback;
 import android.webkit.WebView;
 import android.widget.Toast;
 
-import com.common.lib_model_web.DWebView;
 import com.common.lib_model_web.uti.MainLooper;
 
 /**
  * Created by liuml on 2022/4/27 15:11
  */
-public class JavaScriptInterfaceApi {
+public class JavaScriptInterfaceApiBackup {
 
     private Context context;
-    private DWebView webView;
+    private WebView webView;
 
-    public JavaScriptInterfaceApi(Context context, DWebView webView) {
+    public JavaScriptInterfaceApiBackup(Context context, WebView webView) {
         this.context = context;
         this.webView = webView;
     }

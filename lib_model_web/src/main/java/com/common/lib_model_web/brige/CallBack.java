@@ -18,6 +18,7 @@ public class CallBack {
     public void apply(JSONObject jsonObject) {
         if (mWebView != null) {
             try {
+                Log.e("CallBack", "javascript:" + cbName + "(" + jsonObject.toString() + ")");
                 mWebView.post(() -> {
                     mWebView.evaluateJavascript("javascript:" + cbName + "(" + jsonObject.toString() + ")", new ValueCallback<String>() {
                         @Override

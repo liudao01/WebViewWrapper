@@ -6,6 +6,8 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
+import android.webkit.ValueCallback;
+import android.widget.Button;
 
 import com.common.lib_model_web.fragment.ProgressWebFragment;
 
@@ -14,6 +16,8 @@ public class TestWebActivity extends AppCompatActivity {
 
     private String title;
     private String url;
+    private Button btCallH5;
+
 
 
 //    public static void start(Context context, String title, String url, int testLevel) {
@@ -31,8 +35,11 @@ public class TestWebActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test_web);
+        btCallH5 = findViewById(R.id.bt_call_h5);
+
 //        title = getIntent().getStringExtra(WebConstants.INTENT_TAG_TITLE);
         String title = "腾讯网";
+
 //        String url = "https://xw.qq.com/?f=qqcom";
         url = "file:///android_asset/index.html";
 //        url = "http://10.26.2.109:8080/pos-html/login";
@@ -45,5 +52,18 @@ public class TestWebActivity extends AppCompatActivity {
 
         ProgressWebFragment webviewFragment = ProgressWebFragment.newInstance(url, NativeMethods.class);
         transaction.replace(R.id.web_view_fragment, webviewFragment).commit();
+
+//        webviewFragment.getWebView().evaluateJavascript("",new ValueCallback(){
+//
+//            @Override
+//            public void onReceiveValue(Object o) {
+//
+//            }
+//        });
+
+        btCallH5.setOnClickListener(view->{
+            webviewFragment.jsMethods();
+        });
+
     }
 }

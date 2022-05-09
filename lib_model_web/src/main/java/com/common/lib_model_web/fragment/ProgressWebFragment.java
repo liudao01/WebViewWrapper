@@ -1,14 +1,18 @@
 package com.common.lib_model_web.fragment;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.webkit.JsResult;
+import android.webkit.ValueCallback;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.widget.ProgressBar;
 
+import com.common.lib_model_web.DWebView;
 import com.common.lib_model_web.R;
 import com.common.lib_model_web.WebConstants;
+import com.common.lib_model_web.brige.JavaScriptInterfaceApi;
 import com.common.lib_model_web.interfaces.DWebViewCallBack;
 
 import java.io.Serializable;
@@ -19,6 +23,7 @@ import java.io.Serializable;
 
 public class ProgressWebFragment extends BaseWebviewFragment {
     private ProgressBar pbLoad;
+    private JavaScriptInterfaceApi api;
 
     public static ProgressWebFragment newInstance(String keyUrl) {
         ProgressWebFragment fragment = new ProgressWebFragment();
@@ -29,7 +34,7 @@ public class ProgressWebFragment extends BaseWebviewFragment {
 
     public static ProgressWebFragment newInstance(String keyUrl, Class<? extends Serializable> classz) {
         ProgressWebFragment fragment = new ProgressWebFragment();
-        fragment.setArguments(getBundle(keyUrl,classz));
+        fragment.setArguments(getBundle(keyUrl, classz));
         return fragment;
     }
 
@@ -42,7 +47,7 @@ public class ProgressWebFragment extends BaseWebviewFragment {
     public static Bundle getBundle(String url, Class<?> classz) {
         Bundle bundle = new Bundle();
         bundle.putString(WebConstants.INTENT_TAG_URL, url);
-        bundle.putSerializable(WebConstants.INTENT_TAG_CLAZZ,classz);
+        bundle.putSerializable(WebConstants.INTENT_TAG_CLAZZ, classz);
         return bundle;
     }
 
@@ -77,6 +82,8 @@ public class ProgressWebFragment extends BaseWebviewFragment {
             @Override
             public void pageFinished(String url) {
                 pbLoad.setVisibility(View.GONE);
+
+
             }
 
             @Override
@@ -91,9 +98,20 @@ public class ProgressWebFragment extends BaseWebviewFragment {
 
         });
 
-
+        api = new JavaScriptInterfaceApi(mContext, webView);
 
 
     }
+
+    public void jsMethods() {
+        api.executeJavascript("androidToJs(333)", new JavaScriptInterfaceApi.JavascriptCallback() {
+            @Override
+            public void onReceiveValue(String value) {
+                Log.d("jsMethods", "onReceiveValue: " + value);
+            }
+        });
+
+    }
+
 
 }
