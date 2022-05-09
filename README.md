@@ -10,6 +10,10 @@ webveiw 配置好设置的项目 备份下 H5框架注意点
 
 #  使用篇
 
+引入依赖库
+
+[![](https://jitpack.io/v/liudao01/WebViewDemo.svg)](https://jitpack.io/#liudao01/WebViewDemo)
+
 
 
 #  原理篇
