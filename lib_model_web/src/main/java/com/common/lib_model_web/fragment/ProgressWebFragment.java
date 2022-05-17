@@ -1,5 +1,6 @@
 package com.common.lib_model_web.fragment;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -9,6 +10,7 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.widget.ProgressBar;
 
+import com.common.lib_model_web.BuildConfig;
 import com.common.lib_model_web.DWebView;
 import com.common.lib_model_web.R;
 import com.common.lib_model_web.WebConstants;
@@ -97,6 +99,12 @@ public class ProgressWebFragment extends BaseWebviewFragment {
             }
 
         });
+
+        if (BuildConfig.DEBUG) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+                webView.setWebContentsDebuggingEnabled(true);
+            }
+        }
 
         api = new JavaScriptInterfaceApi(mContext, webView);
 

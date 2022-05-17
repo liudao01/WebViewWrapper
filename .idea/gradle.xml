@@ -16,7 +16,6 @@
             <option value="$PROJECT_DIR$/lib_model_web" />
           </set>
         </option>
-        <option name="resolveModulePerSourceSet" value="false" />
       </GradleProjectSettings>
     </option>
   </component>

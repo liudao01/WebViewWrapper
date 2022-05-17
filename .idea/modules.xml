@@ -4,7 +4,13 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/WebViewDemo.iml" filepath="$PROJECT_DIR$/WebViewDemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/WebViewDemo.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/WebViewDemo.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/WebViewDemo.app.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/WebViewDemo.app.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/WebViewDemo.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/WebViewDemo.app.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/WebViewDemo.app.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/WebViewDemo.app.unitTest.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/lib_model_web/WebViewDemo.lib_model_web.iml" filepath="$PROJECT_DIR$/.idea/modules/lib_model_web/WebViewDemo.lib_model_web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/lib_model_web/WebViewDemo.lib_model_web.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/lib_model_web/WebViewDemo.lib_model_web.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/lib_model_web/WebViewDemo.lib_model_web.main.iml" filepath="$PROJECT_DIR$/.idea/modules/lib_model_web/WebViewDemo.lib_model_web.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/lib_model_web/WebViewDemo.lib_model_web.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/lib_model_web/WebViewDemo.lib_model_web.unitTest.iml" />
     </modules>
   </component>
 </project>
