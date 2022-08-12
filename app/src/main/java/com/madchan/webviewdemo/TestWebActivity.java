@@ -13,6 +13,8 @@ import android.widget.Button;
 import com.common.lib_model_web.brige.JavaScriptInterfaceApi;
 import com.common.lib_model_web.fragment.ProgressWebFragment;
 
+import io.sentry.Sentry;
+
 public class TestWebActivity extends AppCompatActivity {
 
 
@@ -21,7 +23,6 @@ public class TestWebActivity extends AppCompatActivity {
     private Button btCallH5;
 
     private Button btCall;
-
 
 
 //    public static void start(Context context, String title, String url, int testLevel) {
@@ -65,7 +66,7 @@ public class TestWebActivity extends AppCompatActivity {
 //            }
 //        });
 
-        btCallH5.setOnClickListener(view->{
+        btCallH5.setOnClickListener(view -> {
             webviewFragment.getApi().executeJavascript("androidToJs(333)", new JavaScriptInterfaceApi.JavascriptCallback() {
                 @Override
                 public void onReceiveValue(String value) {
@@ -74,15 +75,22 @@ public class TestWebActivity extends AppCompatActivity {
             });
 
         });
-        btCall.setOnClickListener(view->{
+        btCall.setOnClickListener(view -> {
+            try {
+                int i = 1 / 0;
+            } catch (Exception e) {
+                Sentry.captureException(e);
+            }
             webviewFragment.getApi().executeJavascript("callJS()", new JavaScriptInterfaceApi.JavascriptCallback() {
                 @Override
                 public void onReceiveValue(String value) {
                     Log.d("jsMethods", "onReceiveValue: " + value);
+
                 }
             });
 
         });
+        Sentry.captureMessage("testing SDK setup");
 
     }
 }
