@@ -43,7 +43,8 @@ public class TestWebActivity extends AppCompatActivity {
         String title = "腾讯网";
 
 //        String url = "https://xw.qq.com/?f=qqcom";
-        url = "http://10.26.2.109:8080/pos-html/login?v=6384223247";
+        url = "file:///android_asset/js-call-native.html";
+//        url = "http://10.26.2.109:8080/pos-html/login?v=6384223247";
 //        url = "file:///android_asset/index.html";
 //        url = getIntent().getStringExtra(WebConstants.INTENT_TAG_URL);
         setTitle(title);
@@ -55,32 +56,6 @@ public class TestWebActivity extends AppCompatActivity {
         ProgressWebFragment webviewFragment = ProgressWebFragment.newInstance(url, NativeMethods.class);
         transaction.replace(R.id.web_view_fragment, webviewFragment).commit();
 
-//        webviewFragment.getWebView().evaluateJavascript("",new ValueCallback(){
-//
-//            @Override
-//            public void onReceiveValue(Object o) {
-//
-//            }
-//        });
-//
-//        btCallH5.setOnClickListener(view->{
-//            webviewFragment.getApi().executeJavascript("androidToJs(333)", new JavaScriptInterfaceApi.JavascriptCallback() {
-//                @Override
-//                public void onReceiveValue(String value) {
-//                    Log.d("jsMethods", "onReceiveValue: " + value);
-//                }
-//            });
-//
-//        });
-//        btCall.setOnClickListener(view->{
-//            webviewFragment.getApi().executeJavascript("callJS()", new JavaScriptInterfaceApi.JavascriptCallback() {
-//                @Override
-//                public void onReceiveValue(String value) {
-//                    Log.d("jsMethods", "onReceiveValue: " + value);
-//                }
-//            });
-//
-//        });
 
     }
 }
