@@ -17,6 +17,7 @@ import androidx.annotation.Nullable;
 
 import com.common.lib_model_web.R;
 import com.common.lib_model_web.WebConstants;
+import com.common.lib_model_web.brige.NativeMethods;
 import com.common.lib_model_web.uti.LogUtil;
 
 import wendu.dsbridge.DWebView;
@@ -33,13 +34,12 @@ public abstract class BaseWebviewFragment extends BaseFragment {
     public String webUrl;
     public View view;
     public Class clazz;
-    private WebSettings settings;
 
     @LayoutRes
     protected abstract int getLayoutRes();
 
     public void initView() {
-
+        initWebView();
     }
 
 
@@ -59,7 +59,7 @@ public abstract class BaseWebviewFragment extends BaseFragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(getLayoutRes(), container, false);
         mWebview = view.findViewById(R.id.web_view);
-
+        initWebView();
         initView();
         return view;
     }
@@ -67,22 +67,22 @@ public abstract class BaseWebviewFragment extends BaseFragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        initWebView();
+
         loadUrl();
 
     }
 
     private void initWebView() {
-        try {
-            Object obj = clazz.newInstance();
-            mWebview.addJavascriptObject(obj, "");
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-            LogUtil.e(e.getMessage());
-        } catch (java.lang.InstantiationException e) {
-            e.printStackTrace();
-            LogUtil.e(e.getMessage());
-        }
+//        try {
+//            Object obj = clazz.newInstance();
+            mWebview.addJavascriptObject(new NativeMethods(), null);
+//        } catch (IllegalAccessException e) {
+//            e.printStackTrace();
+//            LogUtil.e(e.getMessage());
+//        } catch (java.lang.InstantiationException e) {
+//            e.printStackTrace();
+//            LogUtil.e(e.getMessage());
+//        }
 //        mWebview.requestFocusFromTouch();
 //        mWebview.setScrollBarStyle(WebView.SCROLLBARS_OUTSIDE_OVERLAY);
 //        mWebview.setScrollbarFadingEnabled(false);

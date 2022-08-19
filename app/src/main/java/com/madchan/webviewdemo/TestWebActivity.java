@@ -42,8 +42,10 @@ public class TestWebActivity extends AppCompatActivity {
 //        title = getIntent().getStringExtra(WebConstants.INTENT_TAG_TITLE);
         String title = "腾讯网";
 
-//        String url = "https://xw.qq.com/?f=qqcom";
-        url = "file:///android_asset/js-call-native.html";
+        String url = "https://xw.qq.com/?f=qqcom";
+//        url = "http://10.26.24.213:9528/pos-html/login?v=6384223247";
+//        url = "http://10.26.24.213:9528/pos-html/login?v=6384223247";
+//        url = "file:///android_asset/js-call-native.html";
 //        url = "http://10.26.2.109:8080/pos-html/login?v=6384223247";
 //        url = "file:///android_asset/index.html";
 //        url = getIntent().getStringExtra(WebConstants.INTENT_TAG_URL);
