@@ -1,21 +1,19 @@
 package com.common.lib_model_web.fragment;
 
+import android.graphics.Bitmap;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.webkit.JsResult;
-import android.webkit.ValueCallback;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
 
 import com.common.lib_model_web.BuildConfig;
-import com.common.lib_model_web.DWebView;
 import com.common.lib_model_web.R;
 import com.common.lib_model_web.WebConstants;
-import com.common.lib_model_web.brige.JavaScriptInterfaceApi;
-import com.common.lib_model_web.interfaces.DWebViewCallBack;
 
 import java.io.Serializable;
 
@@ -25,7 +23,7 @@ import java.io.Serializable;
 
 public class ProgressWebFragment extends BaseWebviewFragment {
     private ProgressBar pbLoad;
-    public JavaScriptInterfaceApi api;
+//    public JavaScriptInterfaceApi api;
 
     public static ProgressWebFragment newInstance(String keyUrl) {
         ProgressWebFragment fragment = new ProgressWebFragment();
@@ -63,7 +61,8 @@ public class ProgressWebFragment extends BaseWebviewFragment {
         pbLoad = (ProgressBar) view.findViewById(R.id.pb_load);
         pbLoad.setProgress(100);
 
-        webView.setWebChromeClient(new WebChromeClient() {
+
+        mWebview.setWebChromeClient(new WebChromeClient() {
             @Override
             public void onProgressChanged(WebView view, int progress) {
                 pbLoad.setProgress(progress);
@@ -75,55 +74,48 @@ public class ProgressWebFragment extends BaseWebviewFragment {
             }
         });
 
-        webView.registerdWebViewCallBack(new DWebViewCallBack() {
+        mWebview.setWebViewClient(new WebViewClient() {
             @Override
-            public void pageStarted(String url) {
+            public void onPageStarted(WebView view, String url, Bitmap favicon) {
+                super.onPageStarted(view, url, favicon);
                 pbLoad.setVisibility(View.VISIBLE);
             }
 
             @Override
-            public void pageFinished(String url) {
+            public void onPageFinished(WebView view, String url) {
+                super.onPageFinished(view, url);
                 pbLoad.setVisibility(View.GONE);
-
-
             }
-
-            @Override
-            public boolean overrideUrlLoading(WebView view, String url) {
-                return false;
-            }
-
-            @Override
-            public void onError() {
-
-            }
-
         });
+
 
         if (BuildConfig.DEBUG) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-                webView.setWebContentsDebuggingEnabled(true);
+                mWebview.setWebContentsDebuggingEnabled(true);
             }
         }
 
-        api = new JavaScriptInterfaceApi(mContext, webView);
-
-
-    }
-
-    public JavaScriptInterfaceApi getApi(){
-        return api;
-    }
-
-    public void jsMethods() {
-        api.executeJavascript("androidToJs(333)", new JavaScriptInterfaceApi.JavascriptCallback() {
-            @Override
-            public void onReceiveValue(String value) {
-                Log.d("jsMethods", "onReceiveValue: " + value);
-            }
-        });
+//        api = new JavaScriptInterfaceApi(mContext, webView);
 
     }
 
+//    public JavaScriptInterfaceApi getApi(){
+//        return api;
+//    }
+
+
+
+//    public void jsMethods() {
+//        api.executeJavascript("androidToJs(333)", new JavaScriptInterfaceApi.JavascriptCallback() {
+//            @Override
+//            public void onReceiveValue(String value) {
+//                Log.d("jsMethods", "onReceiveValue: " + value);
+//            }
+//        });
+//
+//    }
+
+
+//    public void setLifcry
 
 }
