@@ -73,16 +73,19 @@ public abstract class BaseWebviewFragment extends BaseFragment {
     }
 
     private void initWebView() {
-//        try {
-//            Object obj = clazz.newInstance();
+        try {
+            String name = clazz.getName();
+            Object obj = clazz.newInstance();
+
+//            mWebview.addJavascriptObject(obj, null);
             mWebview.addJavascriptObject(new NativeMethods(), null);
-//        } catch (IllegalAccessException e) {
-//            e.printStackTrace();
-//            LogUtil.e(e.getMessage());
-//        } catch (java.lang.InstantiationException e) {
-//            e.printStackTrace();
-//            LogUtil.e(e.getMessage());
-//        }
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+            LogUtil.e(e.getMessage());
+        } catch (java.lang.InstantiationException e) {
+            e.printStackTrace();
+            LogUtil.e(e.getMessage());
+        }
 //        mWebview.requestFocusFromTouch();
 //        mWebview.setScrollBarStyle(WebView.SCROLLBARS_OUTSIDE_OVERLAY);
 //        mWebview.setScrollbarFadingEnabled(false);
