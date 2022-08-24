@@ -51,6 +51,7 @@ public abstract class BaseWebviewFragment extends BaseFragment {
             webUrl = bundle.getString(WebConstants.INTENT_TAG_URL);
             clazz = (Class) bundle.getSerializable(WebConstants.INTENT_TAG_CLAZZ);
             Log.d("TAG", "onCreate: webUrl = " + webUrl);
+            Log.d("TAG", "onCreate: clazz = " + clazz.getName());
         }
     }
 
