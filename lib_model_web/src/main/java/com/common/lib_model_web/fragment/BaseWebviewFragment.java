@@ -77,8 +77,8 @@ public abstract class BaseWebviewFragment extends BaseFragment {
             String name = clazz.getName();
             Object obj = clazz.newInstance();
 
-//            mWebview.addJavascriptObject(obj, null);
-            mWebview.addJavascriptObject(new NativeMethods(), null);
+            mWebview.addJavascriptObject(obj, null);
+//            mWebview.addJavascriptObject(new NativeMethods(), null);
         } catch (IllegalAccessException e) {
             e.printStackTrace();
             LogUtil.e(e.getMessage());

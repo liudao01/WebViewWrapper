@@ -37,7 +37,9 @@ public class MainActivity extends AppCompatActivity {
 //        url = "http://10.26.24.213:9528/pos-html/login?v=6384223247";
 //        url = "file:///android_asset/js-call-native.html";
 //        url = "https://xw.qq.com/?f=qqcom";
-        url = "http://10.26.2.109:8080/pos-html/login?v=6384223247";
+        //TODO 删除域名
+        url = "http://10.26.27.122:9528/pos-html/login?v=6384223247";
+//        url = "http://10.26.2.109:8080/pos-html/login?v=6384223247";
 //        url = "file:///android_asset/index.html";
 //        url = getIntent().getStringExtra(WebConstants.INTENT_TAG_URL);
         setTitle(title);
