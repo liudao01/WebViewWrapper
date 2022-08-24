@@ -15,7 +15,6 @@ public class MainActivity extends AppCompatActivity {
     private String title;
     private String url;
 
-
 //    public static void start(Context context, String title, String url, int testLevel) {
 //        Intent intent = new Intent(context, WebActivity.class);
 //        intent.putExtra(WebConstants.INTENT_TAG_TITLE, title);
